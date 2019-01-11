@@ -19,6 +19,7 @@
   float m_damping;
   int speed = 1;
   int bg = 100;
+  int min = 140;
   bool increasingR = true, increasingG = true, increasingB = true;
 
 
@@ -30,11 +31,11 @@
 
     m_damping = damping;
 
-    re = Math.floor((Math.random() * 254) + 1 );
+    re = Math.floor((Math.random() * (254 - min)) + min );
 
-    gr = Math.floor((Math.random() * 254) + 1 );
+    gr = Math.floor((Math.random() * (254 - min)) + min );
 
-    bl = Math.floor((Math.random() * 254) + 1 );
+    bl = Math.floor((Math.random() * (254 - min)) + min );
   }
 
  
@@ -50,14 +51,14 @@
   }
  
   void display() {
-  if (re > speed && re < 255 - speed)
+  if (re > speed + min && re < 255 - speed)
   {
     if (increasingR)
       re+=speed;
     else
       re-=speed;
   }
-  else if (re <= speed)
+  else if (re <= speed + min) 
   {
     re+=speed;
     increasingR = true;
@@ -68,14 +69,14 @@
     increasingR = false;
   }
 
-  if (gr > speed && gr < 255 - speed)
+  if (gr > speed + min && gr < 255 - speed)
   {
     if (increasingG)
       gr+=speed;
     else
       gr-=speed;
   }
-  else if (gr <= speed)
+  else if (gr <= speed + min)
   {
     gr+=speed;
     increasingG = true;
@@ -86,14 +87,14 @@
     increasingG = false;
   }
 
-  if (bl > speed && bl < 255 - speed)
+  if (bl > speed + min && bl < 255 - speed)
   {
     if (increasingB)
       bl+=speed;
     else
       bl-=speed;
   }
-  else if (bl <= speed)
+  else if (bl <= speed + min)
   {
     bl+=speed;
     increasingB = true;
@@ -125,7 +126,7 @@
   		x = w.innerWidth || e.clientWitdh || g.clientWidth,
   		y = w.innerHeight || e.clientHeight || g.clientHeight;
     size(x - 50, y - 100);
-    background(240);
+    background(160);
 
     noStroke();
     fill(0);
@@ -145,7 +146,7 @@
     timer++;
     return;
   }
-      background(240);
+    background(80);
      for (int i = 1; i < numCircles; i++)
     {
 
