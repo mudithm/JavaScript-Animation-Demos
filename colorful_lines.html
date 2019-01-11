@@ -17,7 +17,7 @@
   		g = d.getElementsByTagName('body')[0],
   		x = w.innerWidth || e.clientWitdh || g.clientWidth,
   		y = w.innerHeight || e.clientHeight || g.clientHeight;
-    size(x - 50, y - 100);
+    size(x - 10, y - 100);
     background(250);
 
     prevmouseX = mouseX;
@@ -34,14 +34,19 @@
 	var speed = 3;
 	var sspeed = 1;
 
-  void mouseMoved(){
-  if (time < 5){
+  void mousePressed(){
+  prevmouseX = mouseX;
+  prevmouseY = mouseY;
+}
+
+  void mouseDragged(){
+/*  if (time < 5){
   	time++;
   	prevmouseX = mouseX;
-  prevmouseY = mouseY;
+    prevmouseY = mouseY;
   	return;
 }
-  
+  */
 
   if (initR > speed && initR < 255 - speed)
   {
@@ -98,14 +103,14 @@
   	increasingB = false;
   }
 
-  if (strokeW > 15 + sspeed&& strokeW < 70 - sspeed)
+  if (strokeW > 30 + sspeed&& strokeW < 70 - sspeed)
   {
   	if (increasingS)
   		strokeW+=sspeed;
   	else
   		strokeW-=sspeed;
   }
-  else if (strokeW <= 15 + sspeed)
+  else if (strokeW <= 30 + sspeed)
   {
   	strokeW+=sspeed;
   	increasingS = true;
@@ -128,7 +133,8 @@
 
 </script>
 
-<h1 style="text-align: center">Colorful Lines</h1>
+<a href="home.html"><h1 style="text-align: center; float: left;">Home</h1></a>
+<h1 style="text-align: center; float: left; width: 80vw;">Colorful Lines</h1>
 <canvas id="lines-canvas"></canvas>
 
 </body>
